@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "project Shortest path", "project Shortest path\project Shortest path.pyproj", "{B054337B-A5F3-4A90-8ACB-6519C8FD2BFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B054337B-A5F3-4A90-8ACB-6519C8FD2BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B054337B-A5F3-4A90-8ACB-6519C8FD2BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94E7225F-A212-429D-BD71-27A03908304D}
+	EndGlobalSection
+EndGlobal
