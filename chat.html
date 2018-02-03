@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mogambo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <style type="text/css">
+         .fixed-panel {
+                min-height: 400px;
+                max-height: 400px;
+		background-color: #d9edf7;
+		color: white;
+                overflow: auto;
+
+
+            }
+            .media-list {
+
+           		overflow: auto;
+			clear: both;
+			display: table;
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+			word-break: normal;
+			line-break: strict;	
+            color: black;	
+           }
+			.panel {
+			margin-bottom: 20px;
+			background-color: #fff;
+			border: 6px solid transparent;
+			border-radius: 25px;
+			-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+			box-shadow: 0 1px 1px rgba(0,0,0,.05);
+			}
+			.panel-info {
+			border-color: #6e3c76;
+			}
+			.panel-info>.panel-heading {
+			color: #fff;
+			background-color: #6e3c76;
+			border-color: #6e3c76;
+			}
+			.panel-footer {
+			padding: 10px 15px;
+			background-color: #6e3c76;
+			border-top: 1px solid #6e3c76;
+			border-bottom-right-radius: 3px;
+			border-bottom-left-radius: 3px;
+			}
+			
+			body {
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#608f95+0,008588+9,0c2449+52,1a1e3b+100 */
+			
+			}
+
+        </style>
+    </head>
+<body background="https://i.pinimg.com/736x/bb/7a/09/bb7a09a707f9ba67a04b3818b479d132--entrance-gates-medieval-castle.jpg" style="background-repeat: no-repeat; background-size: 1400px 900px">
+        <div class="container background-color: rgb(255,0,255);">
+		  
+            <div class="row">
+                <h3 class="text-center"><small><strong>Total</strong></small><font color="white"> Intelligence!!! </font><small><strong>Ask</strong></small><font color="white"> here what you can..</font></h3>
+
+                <div >
+				
+                    <div id="chatPanel" class="panel panel-info">
+                        <div class="panel-heading">
+                           
+							<strong> Talk with Me !!!</strong>
+                        
+						</div>
+                        <div class="panel-body fixed-panel">
+                            <ul class="media-list">
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <form method="post" id="chatbot-form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter Message" name="messageText" id="messageText" autofocus/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" type="button" id="chatbot-form-btn">SEND <span class="glyphicon glyphicon-hand-up"></span></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+				
+            </div>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script>
+        $(function() {
+            $('#chatbot-form-btn').click(function(e) {
+                e.preventDefault();
+                $('#chatbot-form').submit();
+            });
+
+            $('#chatbot-form').submit(function(e) {
+                e.preventDefault();
+
+                var message = $('#messageText').val();
+                $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + message + '<hr/></div></div></div></li>');
+                $.ajax({
+                    type: "POST",
+                    url: "/ask",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#messageText').val('');
+
+                        var answer = response.answer;
+                        const chatPanel = document.getElementById("chatPanel");
+                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
+			$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+			
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+        </script>
+    </body>
+</html>
