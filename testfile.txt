@@ -1,0 +1,5 @@
+('Samsung', 'ORGANIZATION')
+('Group', 'ORGANIZATION')
+('(', 'O')
+('Hangul', 'O')
+(':', 'O')
